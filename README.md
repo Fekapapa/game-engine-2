@@ -7,4 +7,8 @@ Main parameters:
 - The suppoerted broswer is the current version of Chrome.
 - The engine itself is a very simple 2D game engine with canvas technology. WebGL is not implemented.
 
-Hppy coding!
+To run the project:
+
+- run server.js with Node JS. Open your Chrome browser the following url: http://localhost:3000/
+
+Happy coding!

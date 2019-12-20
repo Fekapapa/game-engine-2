@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background-color: rgb(40, 40, 40);
+}
+
+.gameCanvas {
+  margin: auto;
+  margin-top: 100px;
+  display: block;
+}
