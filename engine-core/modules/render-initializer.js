@@ -22,7 +22,8 @@ const ImageResizer = (image, targetSize = '720p' ) => {
 const ImagePreloader = (rawImages, resolution) => {
   const preloadedImages = {};
   const images = {};
-  const pathToImages = './game-engine-2/engine-core/assets/images/'
+  //const pathToImages = './game-engine-2/engine-core/assets/images/'
+  const pathToImages = './engine-core/assets/images/'
 
   for (let unit in rawImages) {
     preloadedImages[unit] = {};

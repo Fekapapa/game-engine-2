@@ -22,8 +22,9 @@ http.createServer(function(req, res){
 		res.writeHead(200, {'Content-Type': 'text/javascript'});
 		fileStream.pipe(res);
 	} else if (req.url.match('\.png$')) {
-		const modifiedFilePath = filePath.replace('game-engine-2\\', '')
-		const fileStream = fs.createReadStream(modifiedFilePath);
+		//const modifiedFilePath = filePath.replace('game-engine-2\\', '')
+		//const fileStream = fs.createReadStream(modifiedFilePath);
+		const fileStream = fs.createReadStream(filePath);
 		res.writeHead(200, {'Content-Type': 'image/png'});
 		fileStream.pipe(res);
 	}
