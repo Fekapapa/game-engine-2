@@ -11,6 +11,11 @@ const GenerateUnitData = (state, creationData) => {
     unitData.position = creationData.position;
   }
 
+  if (state.resolution === '720p') {
+    unitData.width = unitData.width / 3 * 2;
+    unitData.height = unitData.height / 3 * 2;
+  }
+
   return unitData;
 }
 

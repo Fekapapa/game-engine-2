@@ -23,7 +23,8 @@ http.createServer(function(req, res){
 		res.writeHead(200, {'Content-Type': 'text/javascript'});
 		fileStream.pipe(res);
 	} else if (req.url.match('\.png$')) {
-		const fileStream = fs.createReadStream(filePath);
+		const filePathEngineCore = path.join(__dirname, './frontend/engine-core/', req.url );
+		const fileStream = fs.createReadStream(filePathEngineCore);
 		res.writeHead(200, {'Content-Type': 'image/png'});
 		fileStream.pipe(res);
 	}

@@ -8,26 +8,29 @@ import {
   RenderInitializer,
   CreateElement,
 //  CreateWave,
-//  UpdateCOM,
-//  Render
+  UpdateGameLoop,
+  Render
 } from './modules/index.js';
 
 let state = {
   canvasObjectModel: {},
   initializedRenderData: {},
-  menu: {}
+  menu: {},
+  enemyUnits: {},
+  playerUnits: {},
+  resolution: '720p'
 };
 
 const Init = () => {
   const start = new Date();
   //UserEventHandler();
-  state.initializedRenderData = RenderInitializer(Images().images);
+  state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
   state.menu = MainMenuInitialState();
 
   const createLandingBackground = {
     type: 'menuItem',
     name: 'landingBackground',
-    position: { x: 960, y: 540 }
+    position: { x: 640, y: 360 }
   }
 
   CreateElement(createLandingBackground);
@@ -48,7 +51,7 @@ const GetState = () => {
 
 const Main = () => {
   const toRender = [];
-  //UpdateCOM(toRender);
+  UpdateGameLoop(toRender);
   Render(toRender);
 
   window.requestAnimationFrame(Main);

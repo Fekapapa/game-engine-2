@@ -15,7 +15,8 @@ const MainMenuInitialState = () => {
           "height": 1080,
           "zIndex": -1,
           "facing": "none",
-          "class": "background",
+          "activity": "idle",
+          "type": "staticImageElement",
         }
       }
     }
