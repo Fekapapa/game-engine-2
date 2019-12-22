@@ -1,7 +1,5 @@
 'use strict'
 
-import { LandingBackgroundSpriteData } from '../assets/images/menu-items/landing-background.js';
-
 const MainMenuInitialState = () => {
   return ({
     "menuItems":{

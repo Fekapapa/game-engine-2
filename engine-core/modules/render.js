@@ -33,11 +33,13 @@ const RenderHealthBar = (ctx, element) => {
 
 const RenderNormalElement = (ctx, frame, element) => {
   ctx.drawImage(
-    frame,
-    element.dx - element.width / 2,
-    720 - element.dy - element.height / 2
-  )
+      frame,
+      element.dx - element.width / 2,
+      720 - element.dy - element.height / 2
+    )
 }
+
+
 
 const RenderRotatedElement = (ctx, preloadedImages, element) => {
   ctx.save();
@@ -58,6 +60,7 @@ const Render = (data) => {
   const preloadedImages = initData.preloadedImages;
   const ctx = initData.ctx;
   ctx.clearRect(0, 0, initData.canvasWidth, initData.canvasHeight);
+
   let length = data.length;
 
   const sortedData = data.sort(function (a, b) {
@@ -69,14 +72,14 @@ const Render = (data) => {
     const frame = preloadedImages[element.type][element.frame];
 
     if(element.healthBar) {
-      RenderHealthBar(ctx, element);
+      //RenderHealthBar(ctx, element);
     }
 
     if (frame) {
       if(element.facing === 'left') {
-        RenderFlippedElement(ctx, preloadedImages, element);
+        //RenderFlippedElement(ctx, preloadedImages, element);
       } else if (element.angle) {
-        RenderRotatedElement(ctx, preloadedImages, element);
+        //RenderRotatedElement(ctx, preloadedImages, element);
       } else {
         RenderNormalElement(ctx, frame, element);
       }

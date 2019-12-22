@@ -13,15 +13,37 @@ import { GetState, SetState } from '../main.js';
 
 let timerHelper = 0;
 
+const UpdateUnitData = (unitState) => {
+  //let state = GetState();
+  //const unit = updateUnitStateData.unitData;
+  //const select = updateUnitStateData.selected;
+  //const enemyList = updateUnitStateData.enemyList;
+  //const towerList = updateUnitStateData.towerList;
+  //const unitsToDeleteList = updateUnitStateData.unitsToDeleteList;
+  //const unitsToDamageList = updateUnitStateData.unitsToDamageList;
+
+  unitState.prevActivity = unitState.activity;
+
+  //ClassDependentPreparations(unit, enemyList, towerList);
+  //CheckSelected(select, unit);
+
+  //if (!unitState.goto.x && unitState.class !== "tower") {
+  //  unitState.activity = 'idle';
+  //} else {
+    //CalcPositionAndStatus(unit, unitsToDamageList, unitsToDeleteList);
+  //}
+  return unitState
+}
+
 const GenerateFrameName = (unitState) => {
   if (unitState.type === 'staticImageElement') {
     return unitState.activity + unitState.frameImg
   }
 
-  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 6) {
+  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 10) {
     unitState.frame = 0;
     unitState.frameImg = 0
-  } else if (unitState.frame % 6 === 0) {
+  } else if (unitState.frame % 10 === 0) {
     unitState.frameImg++
   }
 
@@ -54,21 +76,21 @@ const UpdateGameLoop = (toRender) => {
   const start = new Date();
 
   let state = GetState();
+
   const enemyUnits = {};
   const playerUnits = {};
   const unitsToDeleteList = [];
   const unitsToDamageList = [];
 
   for (let unitId in state.canvasObjectModel) {
-    const unitData = { ...state.canvasObjectModel[unitId] };
+    let unitData = { ...state.canvasObjectModel[unitId] };
     const spriteData = state.initializedRenderData.preloadedImages[unitData.name];
 
-    //const unitState = UpdateUnitState(updateUnitStateData);
-    const frameName = GenerateFrameName(unitData);
+    const unitState = UpdateUnitData(unitData);
+    const frameName = GenerateFrameName(unitState);
+    const frameData = GenerateFrameData(unitState, frameName);
 
-    const frameData = GenerateFrameData(unitData, frameName);
-
-    state.canvasObjectModel[unitId] = unitData;
+    state.canvasObjectModel[unitId] = unitState;
 
     toRender.push(frameData);
   }
@@ -84,7 +106,6 @@ const UpdateGameLoop = (toRender) => {
   //state = FireStarter(state);
 
   SetState(state);
-
   const end = new Date();
 
   if (timerHelper % 60 === 0) {

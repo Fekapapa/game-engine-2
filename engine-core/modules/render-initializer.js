@@ -9,6 +9,7 @@ const shadowCanvasCtx = shadowCanvas.getContext('2d');
 const ImageResizer = (image, targetSize = '720p' ) => {
   let width = 0;
   let height = 0;
+  shadowCanvasCtx.clearRect(0, 0, image.width, image.height);
 
   if (targetSize === '720p') {
     width = image.width / 3 * 2;
