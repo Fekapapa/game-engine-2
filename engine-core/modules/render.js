@@ -32,6 +32,10 @@ const RenderHealthBar = (ctx, element) => {
 }
 
 const RenderNormalElement = (ctx, frame, element) => {
+  if (element.type === "iceElemental") {
+    //console.log(frame)
+    //console.log(element.frame)
+  }
   ctx.drawImage(
       frame,
       element.dx - element.width / 2,
@@ -101,7 +105,7 @@ const Render = (data) => {
   const end = new Date();
 
   if (timerHelper % 60 === 0) {
-    console.warn('Total render time: ', end-start + ' ms')
+    //console.warn('Total render time: ', end-start + ' ms')
   }
 }
 

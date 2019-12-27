@@ -40,10 +40,10 @@ const GenerateFrameName = (unitState) => {
     return unitState.activity + unitState.frameImg
   }
 
-  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 8) {
+  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 6) {
     unitState.frame = 0;
     unitState.frameImg = 0
-  } else if (unitState.frame % 8 === 0) {
+  } else if (unitState.frame % 6 === 0) {
     unitState.frameImg++
   }
 
