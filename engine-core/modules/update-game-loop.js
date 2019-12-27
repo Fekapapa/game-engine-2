@@ -40,10 +40,10 @@ const GenerateFrameName = (unitState) => {
     return unitState.activity + unitState.frameImg
   }
 
-  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 10) {
+  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 8) {
     unitState.frame = 0;
     unitState.frameImg = 0
-  } else if (unitState.frame % 10 === 0) {
+  } else if (unitState.frame % 8 === 0) {
     unitState.frameImg++
   }
 
@@ -109,8 +109,8 @@ const UpdateGameLoop = (toRender) => {
   const end = new Date();
 
   if (timerHelper % 60 === 0) {
-    console.warn('Total game loop update time: ', end-start + ' ms')
-    console.log('Number of objects in Canvas Object Model: ', Object.keys(state.canvasObjectModel).length)
+    //console.warn('Total game loop update time: ', end-start + ' ms')
+    //console.log('Number of objects in Canvas Object Model: ', Object.keys(state.canvasObjectModel).length)
   }
 }
 

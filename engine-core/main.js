@@ -5,7 +5,7 @@ import { Images } from './assets/images/images.js';
 import { MainMenuInitialState } from './initial-states/main-menu-state.js';
 import { UnitsInitialState } from './initial-states/units-state.js';
 import {
-//  UserEventHandler,
+  UserEventHandler,
   RenderInitializer,
   CreateElement,
 //  CreateWave,
@@ -20,12 +20,13 @@ let state = {
   units: {},
   enemyUnits: {},
   playerUnits: {},
+  selected: {},
   resolution: '720p'
 };
 
 const Init = () => {
   const start = new Date();
-  //UserEventHandler();
+  UserEventHandler();
   state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
   state.menu = MainMenuInitialState();
   state.units = UnitsInitialState();
@@ -49,7 +50,8 @@ const Init = () => {
   const end =  new Date();
   console.log('Main init time: ', end-start)
   console.log(state)
-  Main();
+
+  window.setTimeout(Main, 1000);
 }
 
 const SetState = (newState) => {

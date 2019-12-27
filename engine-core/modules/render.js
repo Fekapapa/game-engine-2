@@ -39,8 +39,6 @@ const RenderNormalElement = (ctx, frame, element) => {
     )
 }
 
-
-
 const RenderRotatedElement = (ctx, preloadedImages, element) => {
   ctx.save();
   ctx.translate(element.dx, 720 - element.dy);
