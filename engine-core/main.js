@@ -7,10 +7,10 @@ import { UnitsInitialState } from './initial-states/units-state.js';
 import {
   UserEventHandler,
   RenderInitializer,
-  CreateElement,
-//  CreateWave,
   UpdateGameLoop,
-  Render
+  Render,
+  SoundManager,
+  SceneLoader
 } from './modules/index.js';
 
 let state = {
@@ -21,7 +21,9 @@ let state = {
   enemyUnits: {},
   playerUnits: {},
   selected: {},
-  resolution: '720p'
+  resolution: '720p',
+  currentScene: 'landingMenu',
+  previousScene: ''
 };
 
 const Init = () => {
@@ -31,35 +33,12 @@ const Init = () => {
   state.menu = MainMenuInitialState();
   state.units = UnitsInitialState();
 
-  const createLandingBackground = {
-    type: 'menuItem',
-    name: 'landingBackground',
-    position: { x: 640, y: 360 }
-  }
-
-  CreateElement(createLandingBackground);
-
-  const createIceElemental = {
-    type: 'unit',
-    name: 'iceElemental',
-    position: { x: 200, y: 500 }
-  }
-
-  CreateElement(createIceElemental);
-
-  const createFireElemental = {
-    type: 'unit',
-    name: 'fireElemental',
-    position: { x: 1060, y: 500 }
-  }
-
-  CreateElement(createFireElemental);
-
   const end =  new Date();
   console.log('Main init time: ', end-start)
   console.log(state)
 
-  window.setTimeout(Main, 1000);
+  Main();
+  //SoundManager('./engine-core/assets/sounds/music/main-menu-theme.mp3', true)
 }
 
 const SetState = (newState) => {
@@ -72,12 +51,18 @@ const GetState = () => {
 
 const Main = () => {
   const toRender = [];
+  SceneLoader();
   UpdateGameLoop(toRender);
   Render(toRender);
 
   window.requestAnimationFrame(Main);
 }
 
-Init();
+//Init();
+const initButton = document.getElementById('initButton');
+initButton.onclick = () => {
+  initButton.style.display = 'none';
+  Init();
+};
 
 export { SetState, GetState };

@@ -1,7 +1,7 @@
 'use strict'
 
-const UnitsInitialState = () => {
-  return ({
+const UnitsInitialState = () => (
+  {
     "units":{
       "iceElemental": {
         "unitData": {
@@ -32,7 +32,7 @@ const UnitsInitialState = () => {
         }
       }
     }
-  })
-}
+  }
+)
 
 export { UnitsInitialState };

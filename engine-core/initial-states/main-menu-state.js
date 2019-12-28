@@ -1,7 +1,7 @@
 'use strict'
 
-const MainMenuInitialState = () => {
-  return ({
+const MainMenuInitialState = () => (
+  {
     "menuItems":{
       "landingBackground": {
         "unitData": {
@@ -18,7 +18,7 @@ const MainMenuInitialState = () => {
         }
       }
     }
-  })
-}
+  }
+)
 
 export { MainMenuInitialState };

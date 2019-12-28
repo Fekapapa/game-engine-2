@@ -27,6 +27,10 @@ http.createServer(function(req, res){
 		const fileStream = fs.createReadStream(filePath);
 		res.writeHead(200, {'Content-Type': 'image/png'});
 		fileStream.pipe(res);
+	} else if (req.url.match('\.mp3$')) {
+		const fileStream = fs.createReadStream(filePath);
+		res.writeHead(200, {'Content-Type': 'audio/mpeg'});
+		fileStream.pipe(res);
 	}
 
 	console.log(req.url);
