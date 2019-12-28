@@ -6,7 +6,7 @@ const UnitsInitialState = () => {
       "iceElemental": {
         "unitData": {
           "name": "iceElemental",
-          "frame": 0,
+          "frame": 1,
           "frameImg": 0,
           "frameCount": 22,
           "width": 500,
@@ -20,7 +20,7 @@ const UnitsInitialState = () => {
       "fireElemental": {
         "unitData": {
           "name": "fireElemental",
-          "frame": 0,
+          "frame": 1,
           "frameImg": 0,
           "frameCount": 22,
           "width": 500,
