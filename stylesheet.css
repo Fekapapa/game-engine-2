@@ -3,14 +3,24 @@ body {
   background-color: rgb(40, 40, 40);
 }
 
-.gameCanvas {
-  margin: auto;
-  margin-top: 100px;
-  display: block;
-}
-
 .initButton {
   color: #eee;
   text-align: center;
   cursor: pointer;
+}
+
+.canvasContainer {
+  margin: auto;
+  margin-top: 100px;
+  display: block;
+  position: relative;
+  width: 1280px;
+  height: 720px;
+}
+
+.canvasFader {
+  position: absolute;
+  width: 1280px;
+  height: 720px;
+  pointer-events: none;
 }

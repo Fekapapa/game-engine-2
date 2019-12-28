@@ -23,7 +23,8 @@ let state = {
   selected: {},
   resolution: '720p',
   currentScene: 'landingMenu',
-  previousScene: ''
+  previousScene: '',
+  canvasFaderAlpha: 1
 };
 
 const Init = () => {
@@ -32,13 +33,17 @@ const Init = () => {
   state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
   state.menu = MainMenuInitialState();
   state.units = UnitsInitialState();
+  state.canvasFader = document.getElementById('canvasFader');
 
   const end =  new Date();
   console.log('Main init time: ', end-start)
   console.log(state)
 
+  // This is line is here just to test the scene loader
+  //window.setTimeout(() => {state.currentScene = 'none'}, 3000);
+
   Main();
-  //SoundManager('./engine-core/assets/sounds/music/main-menu-theme.mp3', true)
+  SoundManager('./engine-core/assets/sounds/music/main-menu-theme.mp3', true)
 }
 
 const SetState = (newState) => {
