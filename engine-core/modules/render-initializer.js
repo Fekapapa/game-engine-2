@@ -20,11 +20,50 @@ const ImageResizer = (image, targetSize = '720p' ) => {
   return shadowCanvasCtx.getImageData(0, 0, width, height);
 }
 
-const ImagePreloader = (rawImages, resolution) => {
+const ImagePreloader = (rawImages, resolution, start) => {
   const preloadedImages = {};
   const images = {};
-  //const pathToImages = './game-engine-2/engine-core/assets/images/'
   const pathToImages = './engine-core/assets/images/'
+
+/*const units = Object.keys(rawImages);
+const unitIndex = 0;
+const unitLoader = (unitIndex) => {
+  const unit = units[unitIndex];
+  preloadedImages[unit] = {};
+
+  const frames = Object.keys(rawImages[units[unitIndex]])
+  const frameIndex = 0;
+  const frameLoader = (frameIndex) => {
+    const frame = frames[frameIndex];
+
+    images[`img-${unit}-${frame}`] = new Image();
+    images[`img-${unit}-${frame}`].src = `${pathToImages}${rawImages[unit][frame]}`;
+    images[`img-${unit}-${frame}`].onload = () => {
+      const resizedImageData = ImageResizer(images[`img-${unit}-${frame}`], resolution);
+      createImageBitmap(resizedImageData).then(sprite => {
+        preloadedImages[unit][frame] = sprite;
+       });
+
+       if (frames[frameIndex + 1]) {
+         frameIndex++
+         frameLoader(frameIndex)
+       } else {
+         if (units[unitIndex + 1]) {
+           unitIndex++
+           unitLoader(unitIndex)
+         }
+       }
+    }
+
+    if (!frames[frameIndex + 1] && !units[unitIndex + 1]) {
+      const end = new Date();
+      console.log('Render init time2: ', end-start)
+
+    }
+  }
+  frameLoader(frameIndex)
+}
+unitLoader(unitIndex)*/
 
   for (let unit in rawImages) {
     preloadedImages[unit] = {};
@@ -52,7 +91,7 @@ const RenderInitializer = (images) => {
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
-  const preloadedImages = ImagePreloader(images);
+  const preloadedImages = ImagePreloader(images, '720p', start);
 
   const initializedRenderData = {
     canvasWidth: canvas.width,

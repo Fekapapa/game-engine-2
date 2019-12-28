@@ -4,11 +4,11 @@ import { GetState } from '../main.js';
 
 let timerHelper = 0;
 
-const RenderFlippedElement = (ctx, preloadedImages, element) => {
+const RenderFlippedElement = (ctx, frame, element) => {
   ctx.save();
   ctx.scale(-1, 1);
   ctx.drawImage(
-    preloadedImages[element.type][element.frame],
+    frame,
     - element.dx - element.width / 2,
     720 - element.dy - element.height / 2
   )
@@ -37,10 +37,10 @@ const RenderNormalElement = (ctx, frame, element) => {
     //console.log(element.frame)
   }
   ctx.drawImage(
-      frame,
-      element.dx - element.width / 2,
-      720 - element.dy - element.height / 2
-    )
+    frame,
+    element.dx - element.width / 2,
+    720 - element.dy - element.height / 2
+  )
 }
 
 const RenderRotatedElement = (ctx, preloadedImages, element) => {
@@ -79,7 +79,7 @@ const Render = (data) => {
 
     if (frame) {
       if(element.facing === 'left') {
-        //RenderFlippedElement(ctx, preloadedImages, element);
+        RenderFlippedElement(ctx, frame, element);
       } else if (element.angle) {
         //RenderRotatedElement(ctx, preloadedImages, element);
       } else {

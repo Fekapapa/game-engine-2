@@ -47,6 +47,14 @@ const Init = () => {
 
   CreateElement(createIceElemental);
 
+  const createFireElemental = {
+    type: 'unit',
+    name: 'fireElemental',
+    position: { x: 1060, y: 500 }
+  }
+
+  CreateElement(createFireElemental);
+
   const end =  new Date();
   console.log('Main init time: ', end-start)
   console.log(state)
