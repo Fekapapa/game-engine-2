@@ -5,6 +5,7 @@ import { UserEventHandler } from './userevent-handler.js';
 import { UpdateGameLoop } from './update-game-loop.js';
 import { SoundManager } from './sound-manager.js';
 import { SceneLoader } from './scene-loader.js';
+import { DeleteElement } from './delete-element.js';
 
 export {
   CreateElement,
@@ -13,5 +14,6 @@ export {
   UpdateGameLoop,
   UserEventHandler,
   SoundManager,
-  SceneLoader
+  SceneLoader,
+  DeleteElement
 }

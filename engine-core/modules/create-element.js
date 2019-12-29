@@ -1,6 +1,21 @@
 'use strict'
 
 import { GetState, SetState } from '../main.js';
+import { DeleteElement } from './index.js';
+
+const CreateOnclickFunction = (unitId, clickData) => (
+  () => {
+    if (clickData.delete && clickData.delete === 'itself') {
+      DeleteElement(unitId)
+    }
+
+    if (clickData.create) {
+      clickData.create.forEach(creationData => {
+        CreateElement(creationData)
+      })
+    }
+  }
+)
 
 const GenerateUnitData = (state, creationData) => {
   const name = creationData.name;
@@ -46,12 +61,16 @@ const GenerateUnitId = (canvasObjectModel, name) => {
   return unitId;
 }
 
-const CreateElement = ( creationData ) => {
+const CreateElement = (creationData) => {
   const state = GetState();
   const canvasObjectModel = state.canvasObjectModel;
   const unitData = GenerateUnitData(state, creationData);
   const unitId = GenerateUnitId(canvasObjectModel, creationData.name);
 
+  if (creationData.onclick) {
+    unitData.onclick = CreateOnclickFunction(unitId, creationData.onclick);
+  }
+  
   canvasObjectModel[unitId] = unitData;
   canvasObjectModel[unitId].unitId = unitId;
 

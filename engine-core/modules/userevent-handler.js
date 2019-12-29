@@ -41,8 +41,8 @@ const CalcSelectedElement = (clickX, clickY, canvasObjectModel) => {
 const LeftButtonClicked = (clickX, clickY, canvasObjectModel) => {
   const selectedElement = CalcSelectedElement(clickX, clickY, canvasObjectModel);
 
-  if (selectedElement.eventListener) {
-    selectedElement.eventListener();
+  if (selectedElement.onclick) {
+    selectedElement.onclick();
   }
 
   return selectedElement
