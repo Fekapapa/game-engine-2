@@ -22,7 +22,7 @@ let state = {
   playerUnits: {},
   selected: {},
   resolution: '720p',
-  currentScene: 'landingMenu',
+  currentScene: 'mainMenu',
   previousScene: '',
   canvasFaderAlpha: 1
 };

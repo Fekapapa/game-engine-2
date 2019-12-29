@@ -1,9 +1,14 @@
 'use strict'
 
-const LandingMenuScene = () => [
+const MainMenuScene = () => [
   {
     type: 'menuItem',
-    name: 'landingBackground',
+    name: 'mainMenuBackground',
+    position: { x: 640, y: 360 }
+  },
+  {
+    type: 'menuItem',
+    name: 'playButton',
     position: { x: 640, y: 360 }
   },
   {
@@ -19,4 +24,4 @@ const LandingMenuScene = () => [
 ]
 
 
-export { LandingMenuScene };
+export { MainMenuScene };

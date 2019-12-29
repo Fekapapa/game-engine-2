@@ -1,8 +1,17 @@
 const Images = () => {
   return ({
     "images":{
-      "landingBackground": {
-        "idle0": 'menu-items/landing-background.png'
+      "mainMenuBackground": {
+        "idle0": 'menu-items/main-menu/main-menu-bg.png'
+      },
+      "playButton": {
+        "idle0": 'menu-items/main-menu/play-button.png'
+      },
+      "newGameButton": {
+        "idle0": 'menu-items/main-menu/new-game-button.png'
+      },
+      "newGamePanelBackground": {
+        "idle0": 'menu-items/main-menu/new-game-panel-bg.png'
       },
       "iceElemental": {
         "idle0": 'units/ice-elemental/ice_elemental_idle0.png',

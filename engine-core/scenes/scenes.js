@@ -1,7 +1,7 @@
-import { LandingMenuScene } from './landing-menu-scene.js';
+import { MainMenuScene } from './main-menu-scene.js';
 
 const Scenes = {
-  landingMenu: LandingMenuScene()
+  mainMenu: MainMenuScene()
 }
 
 export { Scenes }
