@@ -20,18 +20,23 @@ const MainMenuScene = () => [
         },
         {
           type: 'menuItem',
-          name: 'newGameButton',
-          position: { x: 640, y: 285 }
+          name: 'isSaved',
+          position: { x: 640, y: 285 },
+          saveSlot: 'slot1'
         },
         {
           type: 'menuItem',
-          name: 'newGameButton',
-          position: { x: 640, y: 195 }
+          name: 'isSaved',
+          position: { x: 640, y: 195 },
+          saveSlot: 'slot2'
+
         },
         {
           type: 'menuItem',
-          name: 'newGameButton',
-          position: { x: 640, y: 105 }
+          name: 'isSaved',
+          position: { x: 640, y: 105 },
+          saveSlot: 'slot3'
+
         }
       ]
     }

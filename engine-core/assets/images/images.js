@@ -10,6 +10,9 @@ const Images = () => {
       "newGameButton": {
         "idle0": 'menu-items/main-menu/new-game-button.png'
       },
+      "saveSlot": {
+        "idle0": 'menu-items/main-menu/save-slot.png'
+      },
       "newGamePanelBackground": {
         "idle0": 'menu-items/main-menu/new-game-panel-bg.png'
       },

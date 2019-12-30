@@ -10,7 +10,8 @@ import {
   UpdateGameLoop,
   Render,
   SoundManager,
-  SceneLoader
+  SceneLoader,
+  InitLocalStorage
 } from './modules/index.js';
 
 let state = {
@@ -21,6 +22,12 @@ let state = {
   enemyUnits: {},
   playerUnits: {},
   selected: {},
+  savedData: {},
+  currentGameData: {
+    slot: '',
+    level: 1,
+    class: 'Warrior'
+  },
   resolution: '720p',
   currentScene: 'mainMenu',
   previousScene: '',
@@ -29,6 +36,7 @@ let state = {
 
 const Init = () => {
   const start = new Date();
+  state.savedData = InitLocalStorage();
   UserEventHandler();
   state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
   state.menu = MainMenuInitialState();
@@ -64,8 +72,12 @@ const Main = () => {
 }
 
 //Init();
+const canvasContainer = document.getElementById('canvasContainerId');
+canvasContainer.style.display = 'none';
+
 const initButton = document.getElementById('initButton');
 initButton.onclick = () => {
+  canvasContainer.style.display = 'block';
   initButton.style.display = 'none';
   Init();
 };

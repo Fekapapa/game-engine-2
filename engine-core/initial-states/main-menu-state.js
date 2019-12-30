@@ -58,6 +58,20 @@ const MainMenuInitialState = () => (
           "activity": "idle",
           "type": "staticImageElement",
         }
+      },
+      "saveSlot": {
+        "unitData": {
+          "name": "saveSlot",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 350,
+          "height": 118,
+          "zIndex": 2,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
       }
     }
   }
