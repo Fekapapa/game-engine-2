@@ -1,6 +1,6 @@
 'use strict'
 
-const MainMenuInitialState = () => (
+const MenuInitialState = () => (
   {
     "menuItems":{
       "mainMenuBackground": {
@@ -86,9 +86,93 @@ const MainMenuInitialState = () => (
           "activity": "idle",
           "type": "staticImageElement",
         }
+      },
+      "backButton": {
+        "unitData": {
+          "name": "backButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 169,
+          "height": 60,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "settingsButton": {
+        "unitData": {
+          "name": "settingsButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 94,
+          "height": 94,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "armyButton": {
+        "unitData": {
+          "name": "armyButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 330,
+          "height": 118,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "heroButton": {
+        "unitData": {
+          "name": "heroButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 330,
+          "height": 118,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "currentMissionMarker": {
+        "unitData": {
+          "name": "currentMissionMarker",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 105,
+          "height": 132,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "completedMissionMarker": {
+        "unitData": {
+          "name": "completedMissionMarker",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 90,
+          "height": 132,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
       }
     }
   }
 )
 
-export { MainMenuInitialState };
+export { MenuInitialState };

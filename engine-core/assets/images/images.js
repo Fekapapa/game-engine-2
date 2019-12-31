@@ -67,6 +67,24 @@ const Images = () => {
       "gameMenuBackground": {
         "idle0": 'menu-items/game-menu/game-menu-bg.png'
       },
+      "backButton": {
+        "idle0": 'menu-items/game-menu/back-button.png'
+      },
+      "armyButton": {
+        "idle0": 'menu-items/game-menu/army-button.png'
+      },
+      "heroButton": {
+        "idle0": 'menu-items/game-menu/hero-button.png'
+      },
+      "settingsButton": {
+        "idle0": 'menu-items/game-menu/settings-button.png'
+      },
+      "completedMissionMarker": {
+        "idle0": 'menu-items/game-menu/completed-mission-marker.png'
+      },
+      "currentMissionMarker": {
+        "idle0": 'menu-items/game-menu/current-mission-marker.png'
+      },
     }
   })
 }

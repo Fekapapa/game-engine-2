@@ -2,7 +2,7 @@
 
 //import { MapData } from './data/mapData/map_01_data.js';
 import { Images } from './assets/images/images.js';
-import { MainMenuInitialState } from './initial-states/main-menu-state.js';
+import { MenuInitialState } from './initial-states/menu-state.js';
 import { UnitsInitialState } from './initial-states/units-state.js';
 import {
   UserEventHandler,
@@ -42,7 +42,7 @@ const Init = () => {
   state.savedData = InitLocalStorage();
   UserEventHandler();
   state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
-  state.menu = MainMenuInitialState();
+  state.menu = MenuInitialState();
   state.units = UnitsInitialState();
   state.scene.canvasFader = document.getElementById('canvasFader');
 
