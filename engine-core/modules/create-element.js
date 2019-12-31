@@ -1,8 +1,7 @@
 'use strict'
 
 import { GetState, SetState } from '../main.js';
-import { DeleteElement } from './index.js';
-import { SaveGame, LoadGame } from './index.js';
+import { SaveGame, LoadGame, SceneLoader } from './index.js';
 
 const CreateSaveSlot = (state, creationData) => {
   const savedData = state.savedData;
@@ -11,35 +10,39 @@ const CreateSaveSlot = (state, creationData) => {
     name: 'newGameButton',
     position: creationData.position,
     onclick: {
-      saveGame: creationData.saveSlot
+      saveGame: creationData.saveSlot,
+      newScene: 'gameMenu'
     }
   };
 
   if (savedData[creationData.saveSlot].isUsed) {
     newCreationData.name = 'saveSlot';
     newCreationData.onclick = {
-      loadGame: creationData.saveSlot
+      loadGame: creationData.saveSlot,
+      newScene: 'gameMenu'
     };
   }
 
   CreateElement(newCreationData)
 }
 
-const CreateOnclickFunction = (unitId, clickData) => (
+const CreateOnclickFunction = (unitId, clickData, state) => (
   () => {
     if (clickData.saveGame) {
       SaveGame(clickData.saveGame)
     }
 
     if (clickData.loadGame) {
-      console.log(GetState())
-
       LoadGame(clickData.loadGame)
-      console.log(GetState())
+    }
+
+    if (clickData.newScene) {
+      console.log()
+      state.scene.currentScene = clickData.newScene;
     }
 
     if (clickData.delete && clickData.delete === 'itself') {
-      DeleteElement(unitId)
+      state.unitsToDeleteList.push(unitId);
     }
 
     if (clickData.create) {
@@ -107,7 +110,7 @@ const CreateElement = (creationData) => {
   const unitId = GenerateUnitId(canvasObjectModel, creationData.name);
 
   if (creationData.onclick) {
-    unitData.onclick = CreateOnclickFunction(unitId, creationData.onclick);
+    unitData.onclick = CreateOnclickFunction(unitId, creationData.onclick, state);
   }
 
   canvasObjectModel[unitId] = unitData;

@@ -63,7 +63,10 @@ const Images = () => {
         "idle19": 'units/fire-elemental/fire_elemental_idle3.png',
         "idle20": 'units/fire-elemental/fire_elemental_idle2.png',
         "idle21": 'units/fire-elemental/fire_elemental_idle1.png',
-      }
+      },
+      "gameMenuBackground": {
+        "idle0": 'menu-items/game-menu/game-menu-bg.png'
+      },
     }
   })
 }

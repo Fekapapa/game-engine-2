@@ -23,15 +23,18 @@ let state = {
   playerUnits: {},
   selected: {},
   savedData: {},
+  unitsToDeleteList: [],
   currentGameData: {
     slot: '',
     level: 1,
     class: 'Warrior'
   },
   resolution: '720p',
-  currentScene: 'mainMenu',
-  previousScene: '',
-  canvasFaderAlpha: 1
+  scene: {
+    currentScene: 'mainMenu',
+    previousScene: '',
+    canvasFaderAlpha: 1
+  }
 };
 
 const Init = () => {
@@ -41,7 +44,7 @@ const Init = () => {
   state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
   state.menu = MainMenuInitialState();
   state.units = UnitsInitialState();
-  state.canvasFader = document.getElementById('canvasFader');
+  state.scene.canvasFader = document.getElementById('canvasFader');
 
   const end =  new Date();
   console.log('Main init time: ', end-start)

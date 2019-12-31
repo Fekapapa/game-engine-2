@@ -1,11 +1,11 @@
 'use strict'
 
 import { GetState, SetState } from '../main.js';
+import { DeleteElements } from './index.js';
 //import { UpdateUnitState } from '../index.js';
 //import { CollisionDetection } from '../index.js';
 //import { TargetFinder } from '../index.js';
 //import { FireStarter } from '../index.js';
-//import { DeleteElement } from '../index.js';
 //import { AreaDamage } from '../index.js';
 //import { DamageDealer } from '../index.js';
 //import { GenerateFrameName } from './partials/generateFrameName.js';
@@ -77,8 +77,8 @@ const UpdateGameLoop = (toRender) => {
 
   let state = GetState();
 
-  const enemyUnits = {};
-  const playerUnits = {};
+  //const enemyUnits = {};
+  //const playerUnits = {};
   const unitsToDeleteList = [];
   const unitsToDamageList = [];
 
@@ -95,12 +95,17 @@ const UpdateGameLoop = (toRender) => {
     toRender.push(frameData);
   }
 
-  state.enemyUnits = enemyUnits;
-  state.playerUnits = playerUnits;
+  //state.enemyUnits = enemyUnits;
+  //state.playerUnits = playerUnits;
+
+  if (state.userAction) {
+    state.userAction();
+    delete state.userAction
+  }
 
   //state = AreaDamage(state);
   //state = DamageDealer(state, unitsToDamageList, unitsToDeleteList);
-  //state = DeleteElement(state, unitsToDeleteList);
+  state = DeleteElements(state);
   //state = CollisionDetection(state);
   //state = TargetFinder(state);
   //state = FireStarter(state);

@@ -38,11 +38,11 @@ const CalcSelectedElement = (clickX, clickY, canvasObjectModel) => {
   return sortedClickedElements[0];
 }
 
-const LeftButtonClicked = (clickX, clickY, canvasObjectModel) => {
-  const selectedElement = CalcSelectedElement(clickX, clickY, canvasObjectModel);
+const LeftButtonClicked = (clickX, clickY, state) => {
+  const selectedElement = CalcSelectedElement(clickX, clickY, state.canvasObjectModel);
 
   if (selectedElement.onclick) {
-    selectedElement.onclick();
+    state.userAction = selectedElement.onclick;
   }
 
   return selectedElement
@@ -65,8 +65,6 @@ const CatchMouseEvent = (e) => {
   const goto = state.selected.goto
   const selectedElement = state.selected;
 
-  console.log(`X: ${clickX}, Y: ${clickY}`)
-
   switch(e.button) {
     case 1:
       // if middle mouse button clicked, nothing happens.
@@ -75,10 +73,9 @@ const CatchMouseEvent = (e) => {
       //state.selected.goto = RightButtonClicked(isSelected, isEnemyUnit, clickX, clickY);
       break;
     default:
-      state.selected = LeftButtonClicked(clickX, clickY, canvasObjectModel);
+      state.selected = LeftButtonClicked(clickX, clickY, state);
       break;
   }
-  console.log(state.selected);
 
   SetState(state);
 
