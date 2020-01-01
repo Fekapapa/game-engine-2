@@ -28,6 +28,7 @@ const CreateSaveSlot = (state, creationData) => {
 
 const CreateOnclickFunction = (unitId, clickData, state) => (
   () => {
+    console.log(state)
     if (clickData.saveGame) {
       SaveGame(clickData.saveGame)
     }
@@ -37,12 +38,15 @@ const CreateOnclickFunction = (unitId, clickData, state) => (
     }
 
     if (clickData.newScene) {
-      console.log()
       state.scene.currentScene = clickData.newScene;
     }
 
     if (clickData.delete && clickData.delete === 'itself') {
       state.unitsToDeleteList.push(unitId);
+    }
+
+    if (clickData.delete && clickData.delete !== 'itself') {
+      state.unitsToDeleteList.push(clickData.delete);
     }
 
     if (clickData.create) {

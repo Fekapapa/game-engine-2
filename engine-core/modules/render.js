@@ -71,6 +71,7 @@ const Render = (data) => {
 
   while (length--) {
     const element = sortedData[length];
+
     const frame = preloadedImages[element.type][element.frame];
 
     if(element.healthBar) {

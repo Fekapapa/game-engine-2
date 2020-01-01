@@ -85,6 +85,30 @@ const Images = () => {
       "currentMissionMarker": {
         "idle0": 'menu-items/game-menu/current-mission-marker.png'
       },
+      "heroMenuBackground": {
+        "idle0": 'menu-items/hero-menu/hero-menu-bg.png'
+      },
+      "inventoryButton": {
+        "idle0": 'menu-items/hero-menu/inventory-button.png'
+      },
+      "skillsButton": {
+        "idle0": 'menu-items/hero-menu/skills-button.png'
+      },
+      "skillsMenuBackground": {
+        "idle0": 'menu-items/hero-menu/skills-menu-bg.png'
+      },
+      "armyButtonWide": {
+        "idle0": 'menu-items/hero-menu/army-button.png'
+      },
+      "skillsMenuBackground": {
+        "idle0": 'menu-items/hero-menu/skills-menu-bg.png'
+      },
+      "castleMenuBackground": {
+        "idle0": 'menu-items/castle-menu/castle-menu-bg.png'
+      },
+      "buildButton": {
+        "idle0": 'menu-items/castle-menu/build-button.png'
+      }
     }
   })
 }

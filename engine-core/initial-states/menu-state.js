@@ -170,6 +170,104 @@ const MenuInitialState = () => (
           "activity": "idle",
           "type": "staticImageElement",
         }
+      },
+      "heroMenuBackground": {
+        "unitData": {
+          "name": "heroMenuBackground",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 1920,
+          "height": 1080,
+          "zIndex": -1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "inventoryButton": {
+        "unitData": {
+          "name": "inventoryButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 350,
+          "height": 118,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "armyButtonWide": {
+        "unitData": {
+          "name": "armyButtonWide",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 350,
+          "height": 118,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "skillsButton": {
+        "unitData": {
+          "name": "skillsButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 350,
+          "height": 118,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "skillsMenuBackground": {
+        "unitData": {
+          "name": "skillsMenuBackground",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 1920,
+          "height": 1080,
+          "zIndex": -1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "castleMenuBackground": {
+        "unitData": {
+          "name": "castleMenuBackground",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 1920,
+          "height": 1080,
+          "zIndex": -1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
+      },
+      "buildButton": {
+        "unitData": {
+          "name": "buildButton",
+          "frame": 0,
+          "frameImg": 0,
+          "frameCount": 1,
+          "width": 330,
+          "height": 118,
+          "zIndex": 1,
+          "facing": "none",
+          "activity": "idle",
+          "type": "staticImageElement",
+        }
       }
     }
   }

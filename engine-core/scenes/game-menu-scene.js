@@ -9,7 +9,7 @@ const GameMenuScene = () => [
   {
     type: 'menuItem',
     name: 'backButton',
-    position: { x: 144/3*2, y: 80/3*2 },
+    position: { x: 118/3*2, y: 80/3*2 },
     onclick: {
       newScene: 'mainMenu'
     }
@@ -17,12 +17,18 @@ const GameMenuScene = () => [
   {
     type: 'menuItem',
     name: 'heroButton',
-    position: { x: 1192/3*2, y: 100/3*2 }
+    position: { x: 1192/3*2, y: 100/3*2 },
+    onclick: {
+      newScene: 'heroMenu'
+    }
   },
   {
     type: 'menuItem',
     name: 'armyButton',
-    position: { x: 1628/3*2, y: 100/3*2 }
+    position: { x: 1628/3*2, y: 100/3*2 },
+    onclick: {
+      newScene: 'armyMenu'
+    }
   },
   {
     type: 'menuItem',
