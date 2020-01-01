@@ -1,7 +1,7 @@
 'use strict'
 
 import { GetState, SetState } from '../main.js';
-import { SaveGame, LoadGame, SceneLoader } from './index.js';
+import { SaveGame, LoadGame, SceneLoader, SoundManager } from './index.js';
 
 const CreateSaveSlot = (state, creationData) => {
   const savedData = state.savedData;
@@ -29,6 +29,8 @@ const CreateSaveSlot = (state, creationData) => {
 const CreateOnclickFunction = (unitId, clickData, state) => (
   () => {
     console.log(state)
+    SoundManager('./engine-core/assets/sounds/sfx/button-click.mp3')
+
     if (clickData.saveGame) {
       SaveGame(clickData.saveGame)
     }
