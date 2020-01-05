@@ -27,7 +27,6 @@ const CreateSaveSlot = (state, creationData) => {
 };
 
 const CreateOnclickFunction = (unitId, clickData, state) => () => {
-  console.log(state);
   SoundManager("./engine-core/assets/sounds/sfx/button-click.mp3");
 
   if (clickData.saveGame) {
@@ -42,12 +41,8 @@ const CreateOnclickFunction = (unitId, clickData, state) => () => {
     state.scene.currentScene = clickData.newScene;
   }
 
-  if (clickData.delete && clickData.delete === "itself") {
-    state.unitsToDeleteList.push(unitId);
-  }
-
-  if (clickData.delete && clickData.delete !== "itself") {
-    state.unitsToDeleteList.push(clickData.delete);
+  if (clickData.delete) {
+    clickData.delete.forEach(id => state.unitsToDeleteList.push(id));
   }
 
   if (clickData.create) {
@@ -55,6 +50,9 @@ const CreateOnclickFunction = (unitId, clickData, state) => () => {
       CreateElement(creationData);
     });
   }
+  console.log(state.unitsToDeleteList);
+
+  //SetState(state);
 };
 
 const GenerateUnitData = (state, creationData) => {

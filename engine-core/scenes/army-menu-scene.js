@@ -1,6 +1,6 @@
 "use strict";
 
-const CastleMenuScene = () => [
+const ArmyMenuScene = () => [
   {
     type: "menuItem",
     name: "castleMenuBackground",
@@ -22,4 +22,4 @@ const CastleMenuScene = () => [
   }
 ];
 
-export { CastleMenuScene };
+export { ArmyMenuScene };

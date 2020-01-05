@@ -51,7 +51,6 @@ const Init = () => {
 
   const end = new Date();
   console.log("Main init time: ", end - start);
-  console.log(state);
 
   // This is line is here just to test the scene loader
   //window.setTimeout(() => {state.currentScene = 'none'}, 3000);

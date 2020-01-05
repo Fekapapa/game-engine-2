@@ -114,34 +114,6 @@ const MenuInitialState = () => ({
         type: "staticImageElement"
       }
     },
-    armyButton: {
-      unitData: {
-        name: "armyButton",
-        frame: 0,
-        frameImg: 0,
-        frameCount: 1,
-        width: 330,
-        height: 118,
-        zIndex: 1,
-        facing: "none",
-        activity: "idle",
-        type: "staticImageElement"
-      }
-    },
-    heroButton: {
-      unitData: {
-        name: "heroButton",
-        frame: 0,
-        frameImg: 0,
-        frameCount: 1,
-        width: 330,
-        height: 118,
-        zIndex: 1,
-        facing: "none",
-        activity: "idle",
-        type: "staticImageElement"
-      }
-    },
     currentMissionMarker: {
       unitData: {
         name: "currentMissionMarker",
@@ -170,9 +142,9 @@ const MenuInitialState = () => ({
         type: "staticImageElement"
       }
     },
-    heroMenuBackground: {
+    inventoryMenuBackground: {
       unitData: {
-        name: "heroMenuBackground",
+        name: "inventoryMenuBackground",
         frame: 0,
         frameImg: 0,
         frameCount: 1,
@@ -198,9 +170,9 @@ const MenuInitialState = () => ({
         type: "staticImageElement"
       }
     },
-    armyButtonWide: {
+    armyButton: {
       unitData: {
-        name: "armyButtonWide",
+        name: "armyButton",
         frame: 0,
         frameImg: 0,
         frameCount: 1,

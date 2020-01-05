@@ -11,7 +11,7 @@ const MainMenuScene = () => [
     name: "playButton",
     position: { x: 640, y: 360 },
     onclick: {
-      delete: "itself",
+      delete: ["playButton0"],
       create: [
         {
           type: "menuItem",

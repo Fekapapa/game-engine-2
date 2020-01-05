@@ -16,18 +16,26 @@ const GameMenuScene = () => [
   },
   {
     type: "menuItem",
-    name: "heroButton",
-    position: { x: (1192 / 3) * 2, y: (100 / 3) * 2 },
+    name: "armyButton",
+    position: { x: (790 / 3) * 2, y: (100 / 3) * 2 },
     onclick: {
-      newScene: "heroMenu"
+      newScene: "armyMenu"
     }
   },
   {
     type: "menuItem",
-    name: "armyButton",
-    position: { x: (1628 / 3) * 2, y: (100 / 3) * 2 },
+    name: "inventoryButton",
+    position: { x: (1220 / 3) * 2, y: (100 / 3) * 2 },
     onclick: {
-      newScene: "armyMenu"
+      newScene: "inventoryMenu"
+    }
+  },
+  {
+    type: "menuItem",
+    name: "skillsButton",
+    position: { x: (1650 / 3) * 2, y: (100 / 3) * 2 },
+    onclick: {
+      newScene: "skillsMenu"
     }
   },
   {

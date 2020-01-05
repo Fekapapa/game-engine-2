@@ -19,6 +19,10 @@ body {
   cursor: url(./engine-core/assets/images/menu-items/cursor.png), pointer;
 }
 
+.canvas {
+  user-select: none;
+}
+
 .canvasFader {
   position: absolute;
   width: 1280px;
