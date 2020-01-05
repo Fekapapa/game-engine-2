@@ -1,97 +1,95 @@
-'use strict'
+"use strict";
 
-import { GetState, SetState } from '../main.js';
-import { SaveGame, LoadGame, SceneLoader, SoundManager } from './index.js';
+import { GetState, SetState } from "../main.js";
+import { SaveGame, LoadGame, SceneLoader, SoundManager } from "./index.js";
 
 const CreateSaveSlot = (state, creationData) => {
   const savedData = state.savedData;
   const newCreationData = {
     type: creationData.type,
-    name: 'newGameButton',
+    name: "newGameButton",
     position: creationData.position,
     onclick: {
       saveGame: creationData.saveSlot,
-      newScene: 'gameMenu'
+      newScene: "gameMenu"
     }
   };
 
   if (savedData[creationData.saveSlot].isUsed) {
-    newCreationData.name = 'saveSlot';
+    newCreationData.name = "saveSlot";
     newCreationData.onclick = {
       loadGame: creationData.saveSlot,
-      newScene: 'gameMenu'
+      newScene: "gameMenu"
     };
   }
 
-  CreateElement(newCreationData)
-}
+  CreateElement(newCreationData);
+};
 
-const CreateOnclickFunction = (unitId, clickData, state) => (
-  () => {
-    console.log(state)
-    SoundManager('./engine-core/assets/sounds/sfx/button-click.mp3')
+const CreateOnclickFunction = (unitId, clickData, state) => () => {
+  console.log(state);
+  SoundManager("./engine-core/assets/sounds/sfx/button-click.mp3");
 
-    if (clickData.saveGame) {
-      SaveGame(clickData.saveGame)
-    }
-
-    if (clickData.loadGame) {
-      LoadGame(clickData.loadGame)
-    }
-
-    if (clickData.newScene) {
-      state.scene.currentScene = clickData.newScene;
-    }
-
-    if (clickData.delete && clickData.delete === 'itself') {
-      state.unitsToDeleteList.push(unitId);
-    }
-
-    if (clickData.delete && clickData.delete !== 'itself') {
-      state.unitsToDeleteList.push(clickData.delete);
-    }
-
-    if (clickData.create) {
-      clickData.create.forEach(creationData => {
-        CreateElement(creationData)
-      })
-    }
+  if (clickData.saveGame) {
+    SaveGame(clickData.saveGame);
   }
-)
+
+  if (clickData.loadGame) {
+    LoadGame(clickData.loadGame);
+  }
+
+  if (clickData.newScene) {
+    state.scene.currentScene = clickData.newScene;
+  }
+
+  if (clickData.delete && clickData.delete === "itself") {
+    state.unitsToDeleteList.push(unitId);
+  }
+
+  if (clickData.delete && clickData.delete !== "itself") {
+    state.unitsToDeleteList.push(clickData.delete);
+  }
+
+  if (clickData.create) {
+    clickData.create.forEach(creationData => {
+      CreateElement(creationData);
+    });
+  }
+};
 
 const GenerateUnitData = (state, creationData) => {
   const name = creationData.name;
   let unitData;
 
-  if (creationData.type === 'menuItem') {
+  if (creationData.type === "menuItem") {
     unitData = { ...state.menu.menuItems[name].unitData };
     unitData.position = creationData.position;
   }
 
-  if (creationData.type === 'unit') {
+  if (creationData.type === "unit") {
     unitData = { ...state.units.units[name].unitData };
     unitData.position = creationData.position;
   }
 
-  if (state.resolution === '720p') {
-    unitData.width = unitData.width / 3 * 2;
-    unitData.height = unitData.height / 3 * 2;
+  if (state.resolution === "720p") {
+    unitData.width = (unitData.width / 3) * 2;
+    unitData.height = (unitData.height / 3) * 2;
   }
 
   return unitData;
-}
+};
 
 const GenerateUnitId = (canvasObjectModel, name) => {
   const sameUnitsList = [];
-  let unitId = '';
+  let unitId = "";
 
   if (!canvasObjectModel[`${name}0`]) {
     unitId = `${name}0`;
     sameUnitsList.push(0);
   } else {
-    for ( let key in canvasObjectModel ) {
+    for (let key in canvasObjectModel) {
       if (key.includes(name)) {
-        sameUnitsList.push(Number(key.replace(name, '')));
+        sameUnitsList.push(Number(key.replace(name, "")));
       }
     }
 
@@ -101,14 +99,14 @@ const GenerateUnitId = (canvasObjectModel, name) => {
   }
 
   return unitId;
-}
+};
 
-const CreateElement = (creationData) => {
+const CreateElement = creationData => {
   const state = GetState();
 
-  if (creationData.name === 'isSaved') {
+  if (creationData.name === "isSaved") {
     CreateSaveSlot(state, creationData);
-    return
+    return;
   }
 
   const canvasObjectModel = state.canvasObjectModel;
@@ -116,7 +114,11 @@ const CreateElement = (creationData) => {
   const unitId = GenerateUnitId(canvasObjectModel, creationData.name);
 
   if (creationData.onclick) {
-    unitData.onclick = CreateOnclickFunction(unitId, creationData.onclick, state);
+    unitData.onclick = CreateOnclickFunction(
+      unitId,
+      creationData.onclick,
+      state
+    );
   }
 
   canvasObjectModel[unitId] = unitData;
@@ -125,6 +127,6 @@ const CreateElement = (creationData) => {
   state.canvasObjectModel[unitId] = { ...canvasObjectModel[unitId] };
 
   SetState(state);
-}
+};
 
 export { CreateElement };

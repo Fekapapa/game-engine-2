@@ -1,9 +1,9 @@
-'use strict'
+"use strict";
 
 //import { MapData } from './data/mapData/map_01_data.js';
-import { Images } from './assets/images/images.js';
-import { MenuInitialState } from './initial-states/menu-state.js';
-import { UnitsInitialState } from './initial-states/units-state.js';
+import { Images } from "./assets/images/images.js";
+import { MenuInitialState } from "./initial-states/menu-state.js";
+import { UnitsInitialState } from "./initial-states/units-state.js";
 import {
   UserEventHandler,
   RenderInitializer,
@@ -12,7 +12,7 @@ import {
   SoundManager,
   SceneLoader,
   InitLocalStorage
-} from './modules/index.js';
+} from "./modules/index.js";
 
 let state = {
   canvasObjectModel: {},
@@ -25,14 +25,14 @@ let state = {
   savedData: {},
   unitsToDeleteList: [],
   currentGameData: {
-    slot: '',
+    slot: "",
     level: 1,
-    class: 'Warrior'
+    class: "Warrior"
   },
-  resolution: '720p',
+  resolution: "720p",
   scene: {
-    currentScene: 'mainMenu',
-    previousScene: '',
+    currentScene: "mainMenu",
+    previousScene: "",
     canvasFaderAlpha: 1
   }
 };
@@ -41,28 +41,31 @@ const Init = () => {
   const start = new Date();
   state.savedData = InitLocalStorage();
   UserEventHandler();
-  state.initializedRenderData = RenderInitializer(Images().images, state.resolution);
+  state.initializedRenderData = RenderInitializer(
+    Images().images,
+    state.resolution
+  );
   state.menu = MenuInitialState();
   state.units = UnitsInitialState();
-  state.scene.canvasFader = document.getElementById('canvasFader');
+  state.scene.canvasFader = document.getElementById("canvasFader");
 
-  const end =  new Date();
-  console.log('Main init time: ', end-start)
-  console.log(state)
+  const end = new Date();
+  console.log("Main init time: ", end - start);
+  console.log(state);
 
   // This is line is here just to test the scene loader
   //window.setTimeout(() => {state.currentScene = 'none'}, 3000);
 
   Main();
-  SoundManager('./engine-core/assets/sounds/music/main-menu-theme.mp3', true)
-}
+  SoundManager("./engine-core/assets/sounds/music/main-menu-theme.mp3", true);
+};
 
-const SetState = (newState) => {
+const SetState = newState => {
   state = { ...newState };
-}
+};
 
 const GetState = () => {
-  return { ...state }
+  return { ...state };
 };
 
 const Main = () => {
@@ -72,16 +75,16 @@ const Main = () => {
   Render(toRender);
 
   window.requestAnimationFrame(Main);
-}
+};
 
 //Init();
-const canvasContainer = document.getElementById('canvasContainerId');
-canvasContainer.style.display = 'none';
+const canvasContainer = document.getElementById("canvasContainerId");
+canvasContainer.style.display = "none";
 
-const initButton = document.getElementById('initButton');
+const initButton = document.getElementById("initButton");
 initButton.onclick = () => {
-  canvasContainer.style.display = 'block';
-  initButton.style.display = 'none';
+  canvasContainer.style.display = "block";
+  initButton.style.display = "none";
   Init();
 };
 

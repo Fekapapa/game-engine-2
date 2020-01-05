@@ -1,7 +1,7 @@
-'use strict'
+"use strict";
 
-import { GetState, SetState } from '../main.js';
-import { DeleteElements } from './index.js';
+import { GetState, SetState } from "../main.js";
+import { DeleteElements } from "./index.js";
 //import { UpdateUnitState } from '../index.js';
 //import { CollisionDetection } from '../index.js';
 //import { TargetFinder } from '../index.js';
@@ -13,7 +13,7 @@ import { DeleteElements } from './index.js';
 
 let timerHelper = 0;
 
-const UpdateUnitData = (unitState) => {
+const UpdateUnitData = unitState => {
   //let state = GetState();
   //const unit = updateUnitStateData.unitData;
   //const select = updateUnitStateData.selected;
@@ -30,48 +30,53 @@ const UpdateUnitData = (unitState) => {
   //if (!unitState.goto.x && unitState.class !== "tower") {
   //  unitState.activity = 'idle';
   //} else {
-    //CalcPositionAndStatus(unit, unitsToDamageList, unitsToDeleteList);
+  //CalcPositionAndStatus(unit, unitsToDamageList, unitsToDeleteList);
   //}
-  return unitState
-}
+  return unitState;
+};
 
-const GenerateFrameName = (unitState) => {
-  if (unitState.type === 'staticImageElement') {
-    return unitState.activity + unitState.frameImg
+const GenerateFrameName = unitState => {
+  if (unitState.type === "staticImageElement") {
+    return unitState.activity + unitState.frameImg;
   }
 
-  if (unitState.activity !== unitState.prevActivity || unitState.frame === unitState.frameCount * 6) {
+  if (
+    unitState.activity !== unitState.prevActivity ||
+    unitState.frame === unitState.frameCount * 6
+  ) {
     unitState.frame = 0;
-    unitState.frameImg = 0
+    unitState.frameImg = 0;
   } else if (unitState.frame % 6 === 0) {
-    unitState.frameImg++
+    unitState.frameImg++;
   }
 
   unitState.frame++;
 
-  return unitState.activity + unitState.frameImg
-}
+  return unitState.activity + unitState.frameImg;
+};
 
 const GenerateFrameData = (unitData, frameName) => {
   let frameData = {
-    'dx': unitData.position.x,
-    'dy': unitData.position.y,
-    'type': unitData.name,
-    'zIndex': unitData.zIndex,
-    'facing': unitData.facing,
-    'frame': frameName,
-    'width': unitData.width,
-    'height': unitData.height
+    dx: unitData.position.x,
+    dy: unitData.position.y,
+    type: unitData.name,
+    zIndex: unitData.zIndex,
+    facing: unitData.facing,
+    frame: frameName,
+    width: unitData.width,
+    height: unitData.height
   };
 
-  if (unitData.angle) { frameData.angle = unitData.angle };
+  if (unitData.angle) {
+    frameData.angle = unitData.angle;
+  }
 
   //frameData = HealthBar(frameData, unit);
 
-  return frameData
-}
+  return frameData;
+};
 
-const UpdateGameLoop = (toRender) => {
+const UpdateGameLoop = toRender => {
   timerHelper += 1;
   const start = new Date();
 
@@ -84,7 +89,8 @@ const UpdateGameLoop = (toRender) => {
 
   for (let unitId in state.canvasObjectModel) {
     let unitData = { ...state.canvasObjectModel[unitId] };
-    const spriteData = state.initializedRenderData.preloadedImages[unitData.name];
+    const spriteData =
+      state.initializedRenderData.preloadedImages[unitData.name];
 
     const unitState = UpdateUnitData(unitData);
     const frameName = GenerateFrameName(unitState);
@@ -100,7 +106,7 @@ const UpdateGameLoop = (toRender) => {
 
   if (state.userAction) {
     state.userAction();
-    delete state.userAction
+    delete state.userAction;
   }
 
   //state = AreaDamage(state);
@@ -117,6 +123,6 @@ const UpdateGameLoop = (toRender) => {
     //console.warn('Total game loop update time: ', end-start + ' ms')
     //console.log('Number of objects in Canvas Object Model: ', Object.keys(state.canvasObjectModel).length)
   }
-}
+};
 
 export { UpdateGameLoop };

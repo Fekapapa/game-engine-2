@@ -1,6 +1,6 @@
-'use strict'
+"use strict";
 
-import { GetState } from '../main.js';
+import { GetState } from "../main.js";
 
 let timerHelper = 0;
 
@@ -9,27 +9,29 @@ const RenderFlippedElement = (ctx, frame, element) => {
   ctx.scale(-1, 1);
   ctx.drawImage(
     frame,
-    - element.dx - element.width / 2,
+    -element.dx - element.width / 2,
     720 - element.dy - element.height / 2
-  )
+  );
   ctx.restore();
-}
+};
 
 const RenderHealthBar = (ctx, element) => {
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = "red";
   ctx.fillRect(
     element.dx - element.width / 2,
     720 - element.dy - element.height / 2 - 10,
-    element.width, 2
+    element.width,
+    2
   );
 
-  ctx.fillStyle = 'green';
+  ctx.fillStyle = "green";
   ctx.fillRect(
     element.dx - element.width / 2,
     720 - element.dy - element.height / 2 - 10,
-    Math.round(element.width * element.healthBar), 2
+    Math.round(element.width * element.healthBar),
+    2
   );
-}
+};
 
 const RenderNormalElement = (ctx, frame, element) => {
   if (element.type === "iceElemental") {
@@ -40,8 +42,8 @@ const RenderNormalElement = (ctx, frame, element) => {
     frame,
     element.dx - element.width / 2,
     720 - element.dy - element.height / 2
-  )
-}
+  );
+};
 
 const RenderRotatedElement = (ctx, preloadedImages, element) => {
   ctx.save();
@@ -49,12 +51,13 @@ const RenderRotatedElement = (ctx, preloadedImages, element) => {
   ctx.rotate(element.angle);
   ctx.drawImage(
     preloadedImages[element.type][element.frame],
-    - element.width / 2, -element.height / 2
+    -element.width / 2,
+    -element.height / 2
   );
   ctx.restore();
-}
+};
 
-const Render = (data) => {
+const Render = data => {
   timerHelper += 1;
   const start = new Date();
   const state = GetState();
@@ -65,7 +68,7 @@ const Render = (data) => {
 
   let length = data.length;
 
-  const sortedData = data.sort(function (a, b) {
+  const sortedData = data.sort(function(a, b) {
     return b.zIndex - a.zIndex;
   });
 
@@ -74,12 +77,12 @@ const Render = (data) => {
 
     const frame = preloadedImages[element.type][element.frame];
 
-    if(element.healthBar) {
+    if (element.healthBar) {
       //RenderHealthBar(ctx, element);
     }
 
     if (frame) {
-      if(element.facing === 'left') {
+      if (element.facing === "left") {
         RenderFlippedElement(ctx, frame, element);
       } else if (element.angle) {
         //RenderRotatedElement(ctx, preloadedImages, element);
@@ -108,6 +111,6 @@ const Render = (data) => {
   if (timerHelper % 60 === 0) {
     //console.warn('Total render time: ', end-start + ' ms')
   }
-}
+};
 
 export { Render };
