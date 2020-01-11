@@ -9,7 +9,7 @@ import { DeleteElements } from "./delete-elements.js";
 import { InitLocalStorage } from "./init-local-storage.js";
 import { SaveGame } from "./save-game.js";
 import { LoadGame } from "./load-game.js";
-
+import { SoundPreloader } from "./sound-preloader.js";
 export {
   CreateElement,
   RenderInitializer,
@@ -21,5 +21,6 @@ export {
   DeleteElements,
   InitLocalStorage,
   SaveGame,
-  LoadGame
+  LoadGame,
+  SoundPreloader
 };

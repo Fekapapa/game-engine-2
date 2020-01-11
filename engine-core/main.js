@@ -2,6 +2,7 @@
 
 //import { MapData } from './data/mapData/map_01_data.js';
 import { Images } from "./assets/images/images.js";
+import { Sounds } from "./assets/sounds/sounds.js";
 import { MenuInitialState } from "./initial-states/menu-state.js";
 import { UnitsInitialState } from "./initial-states/units-state.js";
 import {
@@ -11,12 +12,14 @@ import {
   Render,
   SoundManager,
   SceneLoader,
-  InitLocalStorage
+  InitLocalStorage,
+  SoundPreloader
 } from "./modules/index.js";
 
 let state = {
   canvasObjectModel: {},
   initializedRenderData: {},
+  preloadedSounds: {},
   menu: {},
   units: {},
   enemyUnits: {},
@@ -45,6 +48,7 @@ const Init = () => {
     Images().images,
     state.resolution
   );
+  state.preloadedSounds = SoundPreloader(Sounds().sounds);
   state.menu = MenuInitialState();
   state.units = UnitsInitialState();
   state.scene.canvasFader = document.getElementById("canvasFader");
@@ -56,7 +60,7 @@ const Init = () => {
   //window.setTimeout(() => {state.currentScene = 'none'}, 3000);
 
   Main();
-  SoundManager("./engine-core/assets/sounds/music/main-menu-theme.mp3", true);
+  SoundManager("mainMenuTheme", true);
 };
 
 const SetState = newState => {
@@ -65,6 +69,10 @@ const SetState = newState => {
 
 const GetState = () => {
   return { ...state };
+};
+
+const GetDirectState = () => {
+  return state;
 };
 
 const Main = () => {
@@ -87,4 +95,4 @@ initButton.onclick = () => {
   Init();
 };
 
-export { SetState, GetState };
+export { SetState, GetState, GetDirectState };

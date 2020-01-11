@@ -27,7 +27,7 @@ const CreateSaveSlot = (state, creationData) => {
 };
 
 const CreateOnclickFunction = (unitId, clickData, state) => () => {
-  SoundManager("./engine-core/assets/sounds/sfx/button-click.mp3");
+  SoundManager("buttonClick");
 
   if (clickData.saveGame) {
     SaveGame(clickData.saveGame);
